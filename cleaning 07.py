@@ -35,4 +35,37 @@ def extract_words(text):
 
 df2['morphs'] = df2['morphs'].apply(extract_words)
 
-print(df2)
+df3 = df2[['title','morphs']]
+
+stop_word = ['에서','ㄴ다','ㅂ니다','있다','으로','밝히']
+
+def preprocess(text):
+  text = text.split()
+  text = [i for i in text if i not in stop_word]
+  return text
+
+def make_tokens(df):
+  df['tokens'] = ' '
+  for i, row in df.iterrows():
+    if i%100==0:
+      print(i,'/',len(df))
+    token = preprocess(df['morphs'][i])
+    df['tokens'][i] = ' '.join(token)
+  return df
+
+df4 = make_tokens(df3)
+print(df4)
+
+#불용어처리 확인
+from collections import Counter
+
+words_list = df4['tokens'].str.split()
+
+all_words = [word for words in words_list for word in words]
+
+word_counts = Counter(all_words)
+
+most_common_words = word_counts.most_common(20)
+print("가장 많이 나온 상위 20개 단어:")
+for word, count in most_common_words:
+    print(f"{word}: {count}")
