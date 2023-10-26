@@ -4,7 +4,7 @@ warnings.filterwarnings(action = 'ignore')
 
 df = pd.read_csv("C:/Users/rhksa/OneDrive/바탕 화면/gs project/GS_team/news_data07.csv")
 
-df2 = df[['title','content']]
+df2 = df[['title','date','content']]
 df2['content'] = df['content'].str.replace('\n',' ').replace('\t',' ').replace('\r', ' ')
 
 from konlpy.tag import Komoran
@@ -35,9 +35,9 @@ def extract_words(text):
 
 df2['morphs'] = df2['morphs'].apply(extract_words)
 
-df3 = df2[['title','morphs']]
+df3 = df2[['title','date','morphs']]
 
-stop_word = ['에서','ㄴ다','ㅂ니다','있다','으로','밝히']
+stop_word = stop_word = ['에서','ㄴ다','ㅂ니다','있다','으로','밝히','이번','다는','습니다','어서','ㄴ데','역시','이어','추가','관련','최근','오후','많이']
 
 def preprocess(text):
   text = text.split()
@@ -65,7 +65,7 @@ all_words = [word for words in words_list for word in words]
 
 word_counts = Counter(all_words)
 
-most_common_words = word_counts.most_common(20)
-print("가장 많이 나온 상위 20개 단어:")
+most_common_words = word_counts.most_common(50)
+print("가장 많이 나온 상위 50개 단어:")
 for word, count in most_common_words:
     print(f"{word}: {count}")
