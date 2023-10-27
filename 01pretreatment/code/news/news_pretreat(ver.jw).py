@@ -10,7 +10,7 @@ from collections import Counter
 warnings.filterwarnings(action = 'ignore')
 
 # csv파일 불러오기
-df = pd.read_csv("C:\\DA\\GSTEAM\\GS_team\\01pretreatment\\csv\\news\\raw_data\\R_gs_news2212.csv")
+df = pd.read_csv("C:\\DA\\GSTEAM\\GS_team\\01pretreatment\\csv\\news\\raw_data\\R_gs_news2211.csv")
 
 # df2에 필요정보만 저장
 df2 = df[['date','title','content']]
@@ -71,7 +71,7 @@ print("제목에서 가장 많이 나온 상위 50개 단어:")
 for word, count in most_common_Cwords:
     print(f"{word}: {count}")
 
-stop_Cword = ['건설','건설사','올해','따르','해당','가운데','기자','지난해','이번','이후']
+stop_Cword = ['건설','건설사','올해','최근','이번','상황','가운데','활용','이후','지난해','관련']
 
 def preprocess(text):
   text = text.split()
