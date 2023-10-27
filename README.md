@@ -5,9 +5,12 @@
 - 리뷰    https://www.notion.so/News-Topic-ea43925501214a59a1410c83452af6f2?pvs=4
 - 논문의 주요 쟁점 : LDA / LASSO / FVE / FPE 
 
-# 커밋규칙 https://www.notion.so/commit-rule-694bc3073a914e5ca3eb0524688ae9d5?pvs=4
+# 커밋규칙 
+https://www.notion.so/commit-rule-694bc3073a914e5ca3eb0524688ae9d5?pvs=4
 
-# 프로젝트 과정 https://www.notion.so/WBS-26b635e50f954c649f56f233731cb207?pvs=4
+# 프로젝트 과정 
+https://www.notion.so/WBS-26b635e50f954c649f56f233731cb207?pvs=4
+
 - 크롤링 crawling
 - 전처리과정 pretreatment  
     - 데이터 전처리  
