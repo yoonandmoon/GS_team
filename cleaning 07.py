@@ -2,7 +2,7 @@ import warnings
 import pandas as pd
 warnings.filterwarnings(action = 'ignore')
 
-df = pd.read_csv('C:/Users/rhksa/OneDrive/바탕 화면/gs project/GS_team/News/Cleansing/news02(ver.R).csv')
+df = pd.read_csv('C:/Users/rhksa/OneDrive/바탕 화면/gs project/GS_team/News/Cleansing/news01(ver.R).csv')
 
 df2 = df[['title','date','content']]
 df2['content'] = df['content'].str.replace('\n',' ').replace('\t',' ').replace('\r', ' ')
@@ -108,4 +108,4 @@ df4 = df4.dropna(subset=['tokens'])
 print(df4)
 
 #csv파일 만들기
-df4.to_csv('news02(ver.C01).csv', index=False)
+df4.to_csv('news01(ver.C01).csv', index=False)
