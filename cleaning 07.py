@@ -2,7 +2,7 @@ import warnings
 import pandas as pd
 warnings.filterwarnings(action = 'ignore')
 
-df = pd.read_csv("C:/Users/rhksa/OneDrive/바탕 화면/gs project/GS_team/news_data07.csv")
+df = pd.read_csv('C:/Users/rhksa/OneDrive/바탕 화면/gs project/GS_team/News/Cleansing/news03(ver.R).csv')
 
 df2 = df[['title','date','content']]
 df2['content'] = df['content'].str.replace('\n',' ').replace('\t',' ').replace('\r', ' ')
@@ -15,10 +15,10 @@ import re
 m = MeCab.Tagger()
 
 # 'title' 열의 결과를 'titl' 열에 저장
-df2['titl'] = df2['title'].apply(lambda x: re.sub('[^가-힣ㄱ-ㅎㅏ-ㅣ\\s]', ' ', x))
+df2['Title'] = df2['title'].apply(lambda x: re.sub('[^가-힣ㄱ-ㅎㅏ-ㅣ\\s]', ' ', x))
 
 # 'content' 열의 결과를 'cont' 열에 저장
-df2['cont'] = df2['content'].apply(lambda x: re.sub('[^가-힣ㄱ-ㅎㅏ-ㅣ\\s]', ' ', x))
+df2['Content'] = df2['content'].apply(lambda x: re.sub('[^가-힣ㄱ-ㅎㅏ-ㅣ\\s]', ' ', x))
 
 def extract_words(text):
     # 텍스트를 Mecab을 사용하여 토큰화합니다.
@@ -44,14 +44,14 @@ def extract_words(text):
 
 # 'title' 및 'content' 열에 대해 처리
 for i, row in df2.iterrows():
-    df2.at[i, 'titl'] = extract_words(row['title'])
-    df2.at[i, 'cont'] = extract_words(row['content'])
+    df2.at[i, 'Title'] = extract_words(row['title'])
+    df2.at[i, 'Content'] = extract_words(row['content'])
 
-df3 = df2[['date','titl','cont']]
+df3 = df2[['date','Title','Content']]
 
 from collections import Counter
 
-words_list = df3['cont'].str.split()
+words_list = df3['Content'].str.split()
 
 all_words = [word for words in words_list for word in words]
 
@@ -80,7 +80,7 @@ def make_tokens(df):
   for i, row in df.iterrows():
     if i%100==0:
       print(i,'/',len(df))
-    token = preprocess(df['cont'][i])
+    token = preprocess(df['Content'][i])
     df['tokens'][i] = ' '.join(token)
   return df
 
@@ -105,4 +105,4 @@ df4['date'] = df4['date'].str.split(' ').str[0]
 print(df4)
 
 #csv파일 만들기
-df4.to_csv('파일명.csv', index=False)
+df4.to_csv('news04(ver.C01).csv', index=False)
