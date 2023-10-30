@@ -10,7 +10,7 @@ from collections import Counter
 warnings.filterwarnings(action = 'ignore')
 
 # csv파일 불러오기
-df = pd.read_csv("C:\\DA\\GSTEAM\\GS_team\\01pretreatment\\csv\\news\\raw_data\\R_gs_news2110.csv")
+df = pd.read_csv("C:\\DA\\GSTEAM\\GS_team\\01pretreatment\\csv\\news\\raw_data\\R_gs_news2310.csv")
 
 # df2에 필요정보만 저장
 df2 = df[['date','title','content']]
@@ -89,4 +89,4 @@ def make_tokens(df):
 
 DF = make_tokens(df3)
 print(DF)
-DF.to_csv('gs_news2110(ver.C01).csv', index = False)
+DF.to_csv('gs_news2310(ver.C01).csv', index = False)
