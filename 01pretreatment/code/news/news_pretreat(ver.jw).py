@@ -1,6 +1,6 @@
 # !pip install mecab-ko-msvc mecab-ko-dic-msvc
 # 코랩에서 진행 시
-
+#아무 수정
 import warnings
 import pandas as pd
 import MeCab
