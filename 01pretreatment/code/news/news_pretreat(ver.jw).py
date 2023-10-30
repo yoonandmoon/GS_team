@@ -71,22 +71,22 @@ df3 = df2[['date','Title','Content']]
 # for word, count in most_common_Cwords:
 #     print(f"{word}: {count}")
 
-stop_Cword = ['건설','건설사','올해','최근','이번','상황','가운데','활용','이후','지난해','관련','따르','기간','해당','기자']
+# stop_Cword = ['건설','건설사','올해','최근','이번','상황','가운데','활용','이후','지난해','관련','따르','기간','해당','기자']
 
-def preprocess(text):
-  text = text.split()
-  text = [i for i in text if i not in stop_Cword]
-  return text
+# def preprocess(text):
+#   text = text.split()
+#   text = [i for i in text if i not in stop_Cword]
+#   return text
 
-def make_tokens(df):
-  df['tokens'] = ' '
-  for i, row in df.iterrows():
-    if i%100==0:
-      print(i,'/',len(df))
-    token = preprocess(df['Content'][i])
-    df['tokens'][i] = ' '.join(token)
-  return df
+# def make_tokens(df):
+#   df['tokens'] = ' '
+#   for i, row in df.iterrows():
+#     if i%100==0:
+#       print(i,'/',len(df))
+#     token = preprocess(df['Content'][i])
+#     df['tokens'][i] = ' '.join(token)
+#   return df
 
-DF = make_tokens(df3)
-print(DF)
-DF.to_csv('gs_news2207(ver.C01).csv', index = False)
+# DF = make_tokens(df3)
+# print(DF)
+# DF.to_csv('gs_news2207(ver.C01).csv', index = False)
