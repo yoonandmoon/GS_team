@@ -19,8 +19,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 
-X = df3[['news_stock']]
-y = df3['거래량']
+X = df3[['거래량']]
+y = df3['news_stock']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y,random_state=0)
 scaler = StandardScaler()
