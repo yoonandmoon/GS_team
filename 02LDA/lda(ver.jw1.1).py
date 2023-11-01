@@ -6,22 +6,28 @@ from gensim.models import LdaModel, TfidfModel
 import pyLDAvis
 import pyLDAvis.gensim
 
+#데이터 로드/데이터 파일 경로 입력
 df = pd.read_csv('C:\\DA\\GSTEAM\\GS_team\\01pretreatment\\stock_news_combine.csv')
 
-tokenized_docs = df['Tokens_2'].apply(lambda x: x.split())
+#데이터 전처리, 토픽 모델링
+tokenized_docs = df['Tokens_2'].apply(lambda x: x.split()) #토큰화한 데이터 사용
 id2word = corpora.Dictionary(tokenized_docs)
 corpus_TDM =[id2word.doc2bow(doc) for doc in tokenized_docs]
 tfidf =  TfidfModel(corpus_TDM)
 corpus_TFIDF = tfidf[corpus_TDM]
-n = 15
+n = 15 #원하는 토픽 수
 lda = LdaModel(corpus=corpus_TFIDF,
                id2word=id2word,
                num_topics=n,
                random_state=100)
 
-for t in lda.print_topics() :
-  print(t)
+# pyLDAvis.enable_notebook()
+# vis = pyLDAvis.gensim.prepare(lda, corpus_TFIDF, id2word)
+# pyLDAvis.display(vis)
+#안됨
 
-pyLDAvis.enable_notebook()
-vis = pyLDAvis.gensim.prepare(lda, corpus_TFIDF, id2word)
-pyLDAvis.display(vis)
+# LDA 시각화 생성
+vis = pyLDAvis.gensim.prepare(lda, corpus_TDM, id2word)
+
+# LDA 시각화를 HTML 파일로 내보내기
+pyLDAvis.save_html(vis, 'lda_vis(v.1.1.1)).html')
