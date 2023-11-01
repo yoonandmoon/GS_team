@@ -11,6 +11,6 @@ dfs = [pd.read_csv(file) for file in all_files]
 
 # 모든 데이터프레임을 하나로 합치기
 combined_df = pd.concat(dfs, ignore_index=True)
-
+combined_df['date'] = combined_df['date'].str.split('T').str[0]
 # 결과를 새 CSV 파일로 저장
 combined_df.to_csv('news_combined.csv', index=False)
