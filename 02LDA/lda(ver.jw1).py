@@ -24,4 +24,4 @@ for t in lda.print_topics() :
   print(t)
 
 vis = pyLDAvis.gensim.prepare(lda, corpus_TFIDF, id2word)
-pyLDAvis.save_html(vis, 'lda(v.1).html')
+pyLDAvis.save_html(vis, 'lda(v.1.1).html')
