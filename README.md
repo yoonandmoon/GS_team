@@ -1,4 +1,7 @@
-# GS건설 뉴스기사를 통한 이상 주가 및 거래량의 요인 분석 프로젝트
+
+<h3 align='center'> GS건설 뉴스기사를 통한 이상 주가 및 거래량의 요인 분석 프로젝트 </h3>
+
+<br/>
 
 ## 논문 리뷰
 - 논문    https://married-newsstand-5d3.notion.site/GS_TEAM-927f10dbe6f84dd08f74befa418aaaf5?pvs=4  
